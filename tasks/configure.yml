@@ -1,8 +1,8 @@
 ---
 - name: Define configuracao do servidor MySQL no Debian/Ubuntu
   when: ansible_os_family == "Debian"
-  template:
-    src: mysql-debian.cnf.j2
+  copy:
+    src: mysql-debian.cnf
     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     owner: root
     group: root
@@ -13,8 +13,8 @@
       
 - name: Define configuracao do servidor MySQL no RedHat/CentOS
   when: ansible_os_family == "RedHat"
-  template:
-    src: mysql-redhat.cnf.j2
+  copy:
+    src: mysql-redhat.cnf
     dest: /etc/my.cnf.d/server.cnf
     owner: root
     group: root
